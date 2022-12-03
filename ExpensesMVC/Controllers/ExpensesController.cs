@@ -76,13 +76,38 @@ namespace ExpensesMVC.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
         public IActionResult Delete(int id)
         {
-            var item = _context.Expenses.FirstOrDefault(e => e.Id== id);
+            var item = _context.Expenses.FirstOrDefault(e => e.Id == id);
             _context.Expenses.Remove(item);
             _context.SaveChanges();
 
             return RedirectToAction("Index");
         }
+
+        public IActionResult Edit(int id)
+        {
+            var expense = _context.Expenses.FirstOrDefault(b => b.Id == id);
+            return View(expense);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Expense expense)
+        {
+            if (!ModelState.IsValid)
+                return View(expense);
+
+
+            expense.DateOfPurchase = DateTime.Now;
+            _context.Update(expense);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+
+
+
     }
 }
