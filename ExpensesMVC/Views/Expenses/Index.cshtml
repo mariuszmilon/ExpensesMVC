@@ -1,18 +1,19 @@
 ﻿@model ExpensesMVC.Data.ExpenseVM
 
-<h1>My expense</h1>
-
-
-<button class="btn btn-dark my-3 ">
-        <a class="link-light text-decoration-none" asp-action="Create">Add expense</a>
-</button>
-
+<div class="d-flex justify-content-between align-items-center">
+    <h1>Your Expenses:</h1>
+    <a class="link-light text-decoration-none" asp-action="Create">
+        <button class="btn btn-primary">
+            Add an Expense
+        </button>
+    </a>
+</div>
 
 <form asp-action="Index2" method="get">
 
-    <fieldset>
-        Select month:
-        <select id="MonthToDisplay" name="MonthToDisplay">
+    <fieldset class="d-flex my-5">
+        <h2>Choose a month to display:</h2>
+        <select id="MonthToDisplay" name="MonthToDisplay" class="form-select mx-5">
 
             <option value="@DateTime.Now.Month">@Model.CurrentMonth</option>
 
@@ -31,33 +32,20 @@
 
         </select>
 
-        <p>
-            <input type="submit" value="Submit" /> 
-        </p>
+        <input type="submit" value="Select" class="btn btn-primary"/> 
 
     </fieldset>
 
 </form>
 
-
-
-
-<div>
-    <th class="text-black">
-        Month: @Html.DisplayFor(modelItem => Model.CurrentMonth)
-    </th>
-
-    <br />
-
-    <th class="text-black">
-        Total cost for this month: @Html.DisplayFor(modelItem => Model.TotalPrice) PLN
-    </th>
-</div>
+<th>
+    <h4>Total cost for the current month:&nbsp;&nbsp;&nbsp;<b>@Html.DisplayFor(modelItem => Model.TotalPrice) </b>PLN</h4>
+</th>
 
 <br />
 <br />
 
-All expenses for this month:
+<h4>All expenses for the current month:</h4>
 <table class="table text-light">
     <thead>
         <tr>
@@ -76,26 +64,24 @@ All expenses for this month:
         @foreach (var item in Model.Expenses)
         {
             <tr>
-                <td class="text-black">
+                <td class="text-light">
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
-                <td class="text-black">
+                <td class="text-light">
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
-                <td class="text-black">
+                <td class="text-light">
                     @Html.DisplayFor(modelItem => item.Price) PLN
                 </td>
-                <td>
-                    <a class="link-light text-decoration-none" asp-action="Edit" asp-route-id="@item.Id"><button class="btn btn-warning me-3 py-1 px-3">Edit</button></a>
-                </td>
                 <td class="d-flex">
+                    <a class="link-light text-decoration-none" asp-action="Edit" asp-route-id="@item.Id"><button class="btn btn-warning ms-4 mx-3">Edit</button></a>
                     <form asp-action="Delete">
                         <div>
                             <input type="hidden" name="id" value="@item.Id" />
-                            <input type="submit" value="Remove expense" class="btn btn-danger" />
+                            <input type="submit" value="Remove" class="btn btn-danger" />
                         </div>
                     </form>
-                </td>
+                 </td>
             </tr>
         }
     </tbody>

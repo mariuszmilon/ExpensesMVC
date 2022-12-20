@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\C#\\ExpensesMVC\\ExpensesMVC\\ExpensesMVC.csproj": {}
+    "H:\\Repos\\ExpensesMVC\\ExpensesMVC\\ExpensesMVC.csproj": {}
   },
   "projects": {
-    "C:\\C#\\ExpensesMVC\\ExpensesMVC\\ExpensesMVC.csproj": {
+    "H:\\Repos\\ExpensesMVC\\ExpensesMVC\\ExpensesMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\C#\\ExpensesMVC\\ExpensesMVC\\ExpensesMVC.csproj",
+        "projectUniqueName": "H:\\Repos\\ExpensesMVC\\ExpensesMVC\\ExpensesMVC.csproj",
         "projectName": "ExpensesMVC",
-        "projectPath": "C:\\C#\\ExpensesMVC\\ExpensesMVC\\ExpensesMVC.csproj",
-        "packagesPath": "C:\\Users\\Mariusz\\.nuget\\packages\\",
-        "outputPath": "C:\\C#\\ExpensesMVC\\ExpensesMVC\\obj\\",
+        "projectPath": "H:\\Repos\\ExpensesMVC\\ExpensesMVC\\ExpensesMVC.csproj",
+        "packagesPath": "C:\\Users\\kamil\\.nuget\\packages\\",
+        "outputPath": "H:\\Repos\\ExpensesMVC\\ExpensesMVC\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Mariusz\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\kamil\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
