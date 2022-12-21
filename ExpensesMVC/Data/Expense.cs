@@ -12,6 +12,7 @@ namespace ExpensesMVC.Data
         [Required]
         [Precision(7,2)]
         public decimal Price { get; set; }
+        public string Author { get; set; }
         [DataType(DataType.Date)]
         public DateTime DateOfPurchase { get; set; }
 

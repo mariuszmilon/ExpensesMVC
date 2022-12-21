@@ -18,7 +18,10 @@ namespace ExpensesMVC.Controllers
             startDate = new DateTime(startDate.Year, startDate.Month, 1);
             var endDate = startDate.AddMonths(1);
 
-            var expenses = _context.Expenses.Where(x => x.DateOfPurchase >= startDate && x.DateOfPurchase < endDate);
+            var currentUser = HttpContext?.User;
+            var currentUserName = currentUser.Identity.Name;
+
+            var expenses = _context.Expenses.Where(x => x.DateOfPurchase >= startDate && x.DateOfPurchase < endDate && x.Author == currentUserName);
             var expensesVM = new ExpenseVM();
             var currentMonth = DateTime.Now.Month;
             expensesVM.CurrentMonth = Enum.GetName(typeof(Months), currentMonth);
@@ -39,7 +42,10 @@ namespace ExpensesMVC.Controllers
             startDate = new DateTime(startDate.Year, monthToDisplayInt, 1);
             var endDate = startDate.AddMonths(1);
 
-            var expenses = _context.Expenses.Where(x => x.DateOfPurchase >= startDate && x.DateOfPurchase < endDate);
+            var currentUser = HttpContext?.User;
+            var currentUserName = currentUser.Identity.Name;
+
+            var expenses = _context.Expenses.Where(x => x.DateOfPurchase >= startDate && x.DateOfPurchase < endDate && x.Author == currentUserName);
             var expensesVM = new ExpenseVM();
             expensesVM.MonthToDisplayIntString = MonthToDisplay;
             var currentMonth = DateTime.Now.Month;
@@ -71,6 +77,10 @@ namespace ExpensesMVC.Controllers
             newExpense.Description = expense.Description;
             newExpense.Price = expense.Price;
             newExpense.DateOfPurchase = DateTime.Now;
+            var currentUser = HttpContext?.User;
+            var currentUserName = currentUser.Identity.Name;
+            newExpense.Author = currentUserName;
+
             _context.Add(newExpense);
             _context.SaveChanges();
             return RedirectToAction("Index");
