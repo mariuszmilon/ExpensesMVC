@@ -1,6 +1,10 @@
 ﻿@model ExpensesMVC.Data.Registration;
 
 <h1>Create an account</h1>
+@if(TempData["Error"] != null)
+{
+    <h2 class="alert-danger">@TempData["Error"]</h2>
+}
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Registration" enctype="multipart/form-data">

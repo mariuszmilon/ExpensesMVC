@@ -58,6 +58,7 @@ namespace ExpensesMVC.Controllers
 
             if (!newUserResponse.Succeeded)
             {
+                TempData["Error"] = "Passwords must have at least one non alphanumeric character, one digit and one uppercase!";
                 return View(registration);
             }
 

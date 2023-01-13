@@ -11,10 +11,12 @@ namespace ExpensesMVC.Data
         [DisplayName("Email address")]
         public string Email { get; set; }
         [Required]
+        [MinLength(8)]
         public string Password { get; set; }
         [Required]
         [Compare("Password", ErrorMessage = "Password and Confirmation Password must match.")]
         [DisplayName("Confirm password")]
+        [MinLength(8)]
         public string ConfirmPassword { get; set; }
     }
 }
