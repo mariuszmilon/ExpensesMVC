@@ -14,7 +14,7 @@
             <div class="container-fluid mx-5">
                 <a class="navbar-brand mx-5" asp-area="" asp-controller="Home" asp-action="Index">ExpensesMVC</a>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav flex-grow-1 align-items-center">
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
@@ -27,20 +27,20 @@
                         @if (User.Identity.IsAuthenticated)
                         {
 
-                        <form asp-controller="Login" asp-action="Logout">
+                            <form asp-controller="Login" asp-action="Logout" class="ms-sm-auto">
                                 <button class="btn btn-danger">Logout</button>
-                        </form>
+                            </form>
                         }
                         else
                         {
-                            <a class="nav-link text-light ms-sm-auto" asp-controller="Login" asp-action="Registration">
-                            <li class="btn nav-item btn-primary">
-                                Registration
+                            <a class="nav-link ms-sm-auto" asp-controller="Login" asp-action="Login">
+                            <li class="btn nav-item text-primary fw-bolder">
+                                Sign In
                             </li>
                         </a>
-                        <a class="nav-link text-light" asp-controller="Login" asp-action="Login">
-                            <li class="btn nav-item btn-success">
-                                Login
+                        <a class="nav-link text-light" asp-controller="Login" asp-action="Registration">
+                            <li class="btn nav-item btn-primary">
+                                Sign Up
                             </li>
                         </a>
                         }
