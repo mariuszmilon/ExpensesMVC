@@ -8,6 +8,7 @@ namespace ExpensesMVC.Controllers
     {
         private readonly UserManager<IdentityUser> userManager;
         private readonly SignInManager<IdentityUser> signInManager;
+
         public LoginController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             this.userManager = userManager;
@@ -34,8 +35,10 @@ namespace ExpensesMVC.Controllers
                     if (result.Succeeded)
                         return RedirectToAction("Index", "Expenses");
                 }
+                TempData["Error"] = "Wrong email or password!";
                 return View(login);
             }
+            TempData["Error"] = "Wrong nick or password!";
             return View(login);
         }
 
@@ -52,7 +55,20 @@ namespace ExpensesMVC.Controllers
 
             IdentityUser newUser = new IdentityUser();
             newUser.UserName = registration.Nick;
+            var nick = await userManager.FindByNameAsync(registration.Nick);
+            if(nick != null)
+            {
+                TempData["Error"] = "This nick is already taken!";
+                return View(registration);
+            }
+
             newUser.Email = registration.Email;
+            var email = await userManager.FindByEmailAsync(registration.Email);
+            if (email != null)
+            {
+                TempData["Error"] = "This email is already taken!";
+                return View(registration);
+            }
 
             var newUserResponse = await userManager.CreateAsync(newUser, registration.Password);
 
