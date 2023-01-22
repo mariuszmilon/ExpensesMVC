@@ -14,7 +14,10 @@ namespace ExpensesMVC.Controllers
         }
         public IActionResult Index()
         {
-            var results = _context.Expenses;
+            var currentUser = HttpContext?.User;
+            var currentUserName = currentUser.Identity.Name;
+
+            var results = _context.Expenses.Where(e => e.Author == currentUserName);
             var totalMonthCost = new TotalCostYears();
 
             foreach (var item in results)
